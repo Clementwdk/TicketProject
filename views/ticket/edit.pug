@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  h1.
+    Ticket ID: #{ticket._id}
+  form(action='/tickets/#{ticket._id}/edit',method='post',name='updateticket',enctype='application/x-www-form-urlencoded')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group.row
+      label.col-md-3.col-form-label.font-weight-bold.text-right(for='description') Description
+      .col-md-7
+        input.form-control(type='text', value=ticket.description, name='description', id='description', placeholder='Description', autofocus, autocomplete='description', required)
+    .form-group.row
+      label.col-md-3.col-form-label.font-weight-bold.text-right(for='description') Urgency
+      .col-md-7
+        input.form-control(type='number', value=ticket.urgency, name='urgency', id='urgency', placeholder='Urgency', autocomplete='urgency', required)
+    .form-group.row
+      label.col-md-3.col-form-label.font-weight-bold.text-right(for='numberproblem') Problem number
+      .col-md-7
+        input.form-control(type='number', value=ticket.numberproblem, name='numberproblem', id='numberproblem', placeholder='Problem number', autocomplete='numberproblem', required)
+    .form-group
+      .offset-md-3.col-md-7.pl-2
+        button.col-md-3.btn.btn-lg.btn-primary(type='submit')
+          | Submit

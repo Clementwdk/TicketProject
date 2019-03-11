@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  h1.
+    #{title}
+  table.table
+    thead
+      tr
+        th(scope='col') id
+        th(scope='col') Descriptipn
+        th(scope='col') urgency
+        th(scope='col') numberproblem
+        th(scope='col') actions
+    tbody
+    each ticket, i in tickets
+      tr
+        th(scope='row')= ticket._id
+        td=ticket.description
+        td=ticket.urgency
+        td=ticket.numberproblem
+        td
+          button
+            a(href="/tickets/" + ticket._id + "/edit") Edit
+          bu._idn
+            a(href="/tickets/" + ticket._id) Show
+          form(action="/tickets/" + ticket._id + "/edit",method='post',enctype='application/x-www-form-urlencoded')
+            input(type='hidden', name='_csrf', value=_csrf)
+            input(type='hidden',value='DELETE',name='_method')
+            button(type='submit').
+              Delete

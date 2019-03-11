@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  
+  if !user
+    .text-center
+      h1 Express js application {Ticketing}
+      p.lead A Node.js web application.
+  else
+    .text-center
+      h1 hi! #{user.profile.username}!, Open a ticket:
+      a(href="/tickets/new") New Ticket
